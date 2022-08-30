@@ -7,6 +7,15 @@ function App() {
     lastname:'',
     age:''
   })
+  var [employees,setEmployees] = React.useState([])
+  React.useEffect(()=>{
+   getEmployees()
+  },[])
+  function getEmployees(){
+    fetch("http://localhost:5500/employees")
+    .then(res=>res.json())
+    .then(data=>setEmployees(data))
+  }
   function addEmp(){
     fetch("http://localhost:5500/addEmployee",{
       method:'POST',
@@ -20,6 +29,7 @@ function App() {
     })
     .then((data)=>{
       console.log("data",data)
+      getEmployees();
     })
   }
   return (
@@ -27,7 +37,20 @@ function App() {
       <input type='text' placeholder='firstname' onKeyUp={(e)=>{setEmployee({...employee,firstname:e.target.value})}} /><br/>
       <input type='text' placeholder='lastname'  onKeyUp={(e)=>{setEmployee({...employee,lastname:e.target.value})}}  /><br/>
       <input type='text' placeholder='age'  onKeyUp={(e)=>{setEmployee({...employee,age:e.target.value})}} /><br/>
-      <button onClick={addEmp}>Add Employee</button>
+      <button onClick={addEmp}>AAdd Employee</button>
+      <table border='2' cellSpacing='0'>
+        {
+          employees.map((employee)=>{
+            return(
+              <tr>
+                <td>{employee.firstname}</td>
+                <td>{employee.lastname}</td>
+                <td>{employee.age}</td>
+              </tr>
+            )
+          })
+        }
+      </table>
     </div>
   );
 }
