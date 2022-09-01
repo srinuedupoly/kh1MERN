@@ -4,6 +4,8 @@ var MongoClient = require('mongodb').MongoClient;
 var bodyParser = require('body-parser')
 var url = "mongodb://localhost:27017/";
 var cors = require('cors');
+var ObjectId = require('mongodb').ObjectId;
+
 app.use(cors())
 app.use(bodyParser.json())
 app.get("/",(req,res)=>{
@@ -41,6 +43,55 @@ app.get("/employees",(req,res)=>{
         }
     })
 })
+//for deleting employee record
+app.delete("/deleteEmployee/:id",(req,res)=>{
+    console.log(req.params)
+    MongoClient.connect(url,function(err,con){
+        if(err){
+            console.log("err::",err)
+        }
+        else{
+            var db = con.db('khut');
+            db.collection('employees')
+            .deleteOne({_id:ObjectId(req.params.id)})
+            .then((data)=>{
+                console.log(data)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+        }
+    })
+    res.json({message:"please wait"})
+})
+//for updating employee record
+app.put("/updateEmployee",(req,res)=>{
+    // console.log(req.body)
+    MongoClient.connect(url,function(err,con){
+        if(err){
+            console.log("err::",err)
+        }
+        else{
+            var db = con.db('khut');
+            var newvalues = { $set: {
+                firstname:req.body.firstname,
+                lastname:req.body.lastname,
+                age:req.body.age
+            }};
+            console.log(newvalues)
+            db.collection('employees')
+            .updateOne({_id:ObjectId(req.body._id)},newvalues)
+            .then((data)=>{
+                console.log(data)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+        }
+    })
+    res.json({message:"please wait"})
+})
+
 app.get("/students",(req,res)=>{
     MongoClient.connect(url,function(err,con){
         if(err){
