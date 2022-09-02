@@ -66,7 +66,7 @@ app.delete("/deleteEmployee/:id",(req,res)=>{
 })
 //for updating employee record
 app.put("/updateEmployee",(req,res)=>{
-    // console.log(req.body)
+     console.log(req.body)
     MongoClient.connect(url,function(err,con){
         if(err){
             console.log("err::",err)
