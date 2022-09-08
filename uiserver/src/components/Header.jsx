@@ -6,14 +6,14 @@ function Header() {
             <div class="container">
                 <ul class="navbar-nav">
                 <li class="nav-item">
-                    <Link to="/" class="nav-link">Home</Link>
+                    <Link to="/" class="nav-link" id="home">Home</Link>
                 </li>
                 <li class="nav-item">
-                    <Link to="/employee" class="nav-link">Employee</Link>
+                    <Link to="/employee" class="nav-link" id='employee'>Employee</Link>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <Link to="/login" class="nav-link" id='login'>Login</Link>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>

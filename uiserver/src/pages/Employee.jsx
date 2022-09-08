@@ -17,8 +17,8 @@ function Employee(props) {
   return (
     <div className='container'>
         <div className='d-flex justify-content-between'>
-            <h1>
-                Employee 
+            <h1 id="welcometext">
+                My Employee 
             </h1>
             <Link to="/addEmployee" className='btn btn-success'>+Add Employee</Link>
         </div>

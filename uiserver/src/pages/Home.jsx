@@ -3,7 +3,7 @@ import React from 'react'
 function Home() {
   return (
     <div class='container'>
-        <h1>HOME Page....</h1>
+        <h1 className='myhome'>HOME Page....</h1>
         <h1>
             What is Lorem Ipsum?
         </h1>

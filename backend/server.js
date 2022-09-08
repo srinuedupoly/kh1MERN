@@ -11,6 +11,37 @@ app.use(bodyParser.json())
 app.get("/",(req,res)=>{
     res.send("HI... Please wait")
 })
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
+var users = [
+    {
+        username:'praveen',
+        password:'123'
+    },
+    {
+        username:'prateek',
+        password:'222'
+    },
+    {
+        username:'alok',
+        password:'333'
+    },
+]
+
+app.post("/login",function(req,res){
+    var s = users.find(function(a){
+        if(a.username===req.body.username && a.password===req.body.password){
+            return true
+        }
+    })
+    if(s){
+        res.json({message:'success'})
+    }
+    else{
+        res.json({message:'failed'})
+    }
+})
 app.post("/addEmployee",function(req,res){
     console.log("request received",req.body)
     MongoClient.connect(url,function(err,con){
