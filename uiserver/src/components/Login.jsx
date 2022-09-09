@@ -31,10 +31,10 @@ export default function Login() {
   return (
     <div>
       <h1 id='logintext'>Login</h1>
-      <input type="text" data-testid="username" onChange={(e)=>{setUser({...user,username:e.target.value})}}/><br/>
-      <input type="text" data-testid="password" onChange={(e)=>{setUser({...user,password:e.target.value})}}/><br/>
-      <button type='button' data-testid='login' onClick={login}>Login</button><br/>
-      <h2 data-testid="message">{message}</h2>
+      <input type="text" id="username" onChange={(e)=>{setUser({...user,username:e.target.value})}}/><br/>
+      <input type="text" id="password" onChange={(e)=>{setUser({...user,password:e.target.value})}}/><br/>
+      <button type='button' data-testid='login' onClick={login} id="submit">Login</button><br/>
+      <h2 id="message">{message}</h2>
     </div>
   )
 }
