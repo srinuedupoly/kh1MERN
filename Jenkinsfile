@@ -20,7 +20,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    docker run -p edupoly_node1:latest
+                    docker run -p edupoly_node1
                 }
             }
         }
