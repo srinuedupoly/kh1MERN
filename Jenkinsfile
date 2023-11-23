@@ -4,7 +4,7 @@ FROM node:14 as builder
 WORKDIR /app
 
 # Clone the repository
-RUN git clone https://github.com/edupoly/kh1MERN.git .
+RUN git clone https://github.com/srinuedupoly/kh1MERN.git .
 
 # Navigate to the uiserver directory
 WORKDIR /app/uiserver
