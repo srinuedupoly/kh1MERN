@@ -9,7 +9,7 @@ pipeline {
                     git 'https://github.com/srinuedupoly/kh1MERN.git'
 
                     // Build the Docker image
-                    def dockerImage = docker.build("edupoly_node1:latest", "-f Dockerfile .")
+                    def dockerImage = docker.build("edupoly_node1:latest:latest", "-f Dockerfile .")
 
                     // Push the Docker image to a registry (optional)
                     dockerImage.push()
@@ -20,7 +20,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    docker run -p 5000:5000 edupoly_node1:latest
+                    // Add deployment steps here (e.g., deploy to a server)
                 }
             }
         }
